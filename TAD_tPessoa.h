@@ -23,7 +23,7 @@ tPessoa inicializaPessoa(){
     scanf("%d", &pessoa.rg);
     limparBuffer();
     printf("Digite o nome: ");
-    scanf("%s", &pessoa.nome);
+    scanf("%s", pessoa.nome);
 
     pessoa.datNascimento = inicializaData();
     pessoa.endereco = inicializaEndereco();
