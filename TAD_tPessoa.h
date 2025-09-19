@@ -1,5 +1,5 @@
-#include <string.h>
 #include <stdio.h>
+#include <string.h>
 #include <stdlib.h>
 #include "TAD_tData.h"
 #include "TAD_tEndereco.h"
@@ -11,15 +11,22 @@ typedef struct{
     tEndereco endereco;
 } tPessoa;
 
-tPessoa* inicializaPessoa(tPessoa* p){
-    tPessoa* pessoa = (tPessoa*) malloc(sizeof(tPessoa));
-    printf("Digite o RG: ");
-    scanf("%d", &pessoa->rg);
-    printf("Digite o nome: ");
-    scanf("%s", &pessoa->nome);
+void limparBuffer(){
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF);
+}
 
-    inicializaData(&pessoa->datNascimento);
-    inicializaEndereco(&pessoa->endereco);
+tPessoa inicializaPessoa(){
+    tPessoa pessoa;
+    pessoa.nome = (char*) malloc(51*sizeof(char));
+    printf("Digite o RG: ");
+    scanf("%d", &pessoa.rg);
+    limparBuffer();
+    printf("Digite o nome: ");
+    scanf("%s", &pessoa.nome);
+
+    pessoa.datNascimento = inicializaData();
+    pessoa.endereco = inicializaEndereco();
 
     return pessoa;
 }
@@ -48,6 +55,8 @@ void alteraCelularPessoa(tPessoa* p){
 }
 
 void alteraNomePessoa(tPessoa* p){
+    limparBuffer();
     printf("Digite um novo Nome: ");
-    scanf("%s", &p->nome);
+    fgets(p->nome, 51, stdin);
+    p->nome[strcspn(p->nome, "\n")] = 0;
 }
