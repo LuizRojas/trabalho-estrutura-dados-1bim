@@ -6,15 +6,15 @@ typedef struct{
     int ano;
 } tData;
 
-void inicializaData(tData d){
+void inicializaData(tData* d){
     printf("Digite o dia: ");
-    scanf("%02d", &d.dia);
+    scanf("%d", &d->dia);
     printf("Digite o mes: ");
-    scanf("%02d", &d.mes);
+    scanf("%d", &d->mes);
     printf("Digite o ano: ");
-    scanf("%04d", &d.ano);
+    scanf("%d", &d->ano);
 }
 
-void apresentaData(tData d){
-    printf("Dados da data:\nDia: %d\nMes: %d\nAno: %d", d.dia, d.mes, d.ano);
+void apresentaData(tData* d){
+    printf("Dados da data:\nDia: %02d\nMes: %02d\nAno: %04d\n", d->dia, d->mes, d->ano);
 }

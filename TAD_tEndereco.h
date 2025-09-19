@@ -6,23 +6,27 @@ typedef struct {
     int celular;
 } tEndereco;
 
-void inicializaEndereco(tEndereco endereco){
+void inicializaEndereco(tEndereco* endereco){
     printf("Digite o CEP: ");
-    scanf("%08d", &endereco.cep);
+    scanf("%d", &endereco->cep);
     printf("Digite o Numero da residencia: ");
-    scanf("%08d", &endereco.numero_residencia);
+    scanf("%d", &endereco->numero_residencia);
     printf("Digite o Celular: ");
-    scanf("%08d", &endereco.celular);
+    scanf("%d", &endereco->celular);
 }
 
-void apresentaEndereco(){
-    
+void apresentaEndereco(tEndereco* endereco){
+    printf("Dados do Endereco:\nCEP: %d\nNumero: %d\nCelular: %d\n", endereco->cep, endereco->numero_residencia, endereco->celular);
 }
 
-void alteraResidencia(){
-
+void alteraResidencia(tEndereco* endereco, int cep, int numero){
+    endereco->cep = cep;
+    endereco->numero_residencia = numero;
 }
 
-void alteraCelular(){
-
+void alteraCelular(tEndereco* endereco){
+    int cel;
+    printf("Digite o novo numero do celular: ");
+    scanf("%08d", cel);
+    endereco->celular = cel;
 }
